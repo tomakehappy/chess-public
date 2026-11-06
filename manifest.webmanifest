@@ -1,0 +1,17 @@
+{
+  "name": "Schach",
+  "short_name": "Schach",
+  "description": "Schach gegen den Computer oder online gegen Freunde — offline spielbar.",
+  "lang": "de",
+  "start_url": "./chess.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#141b20",
+  "theme_color": "#141b20",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

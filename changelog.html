@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Schach — Änderungen</title>
+<style>
+  :root{
+    --bg:#141b20; --bg2:#1b242b; --panel:#222d35; --ink:#e9e3d6; --ink-dim:#8a96a0;
+    --line:#33414b; --accent:#cba135;
+    --uifont:'Optima','Avenir Next','Segoe UI',system-ui,-apple-system,sans-serif;
+    --mono:'SF Mono','Menlo','Consolas','Liberation Mono',monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:radial-gradient(120% 120% at 50% 0%, #1a242b 0%, var(--bg) 60%);
+    color:var(--ink); font-family:var(--uifont); line-height:1.5;
+    min-height:100vh; padding:clamp(16px,4vw,40px);
+  }
+  .wrap{max-width:760px; margin:0 auto}
+  header{border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:22px}
+  h1{font-size:clamp(20px,3.4vw,28px); font-weight:700; letter-spacing:.01em}
+  .ver{font-family:var(--mono); color:var(--accent); font-size:14px; margin-top:6px}
+  .back{display:inline-block; margin-top:12px; color:var(--accent); text-decoration:none; font-size:13px; font-family:var(--mono)}
+  .back:hover{text-decoration:underline}
+  section{margin:0 0 26px}
+  h2{font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-dim); margin-bottom:10px}
+  ul{list-style:none; display:flex; flex-direction:column; gap:9px}
+  li{position:relative; padding-left:20px; font-size:15px}
+  li::before{content:'▸'; position:absolute; left:0; color:var(--accent)}
+  li b{color:var(--ink)}
+  li span{color:var(--ink-dim)}
+  code{font-family:var(--mono); color:var(--accent); font-size:.9em}
+  footer{border-top:1px solid var(--line); padding-top:14px; margin-top:10px; color:var(--ink-dim); font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Schach — Änderungen</h1>
+    <div class="ver">Version 26.10.30.03</div>
+    <a class="back" href="chess.html">← zurück zum Spiel</a>
+  </header>
+
+  <section>
+    <h2>Neu in Version 26.10.30.03</h2>
+    <ul>
+      <li><b>Eingebauter Computer bis zu 12× schneller</b>: Er spielt dieselben Züge wie bisher, rechnet in komplexen Stellungen aber Sekunden statt Minuten. Vor allem Stufe 4 im Mittelspiel antwortet jetzt zügig.</li>
+      <li><b>Neue Version sofort sichtbar</b>: Nach einem Update lädt die App die neue Version schon beim ersten Öffnen, nicht erst beim zweiten. Die erste Installation lädt rund 1 MB weniger herunter.</li>
+      <li><b>Online sparsamer</b>: Der Spielstand wird erst nach der letzten Antwort neu abgefragt; beim Warten auf den Partner oder nach Partieende seltener. Das schont Akku und mobiles Netz.</li>
+      <li><b>PGN-Export</b>: Das Datum stimmt jetzt auch kurz nach Mitternacht. Online stehen die echten Spielernamen drin, und Chess960 bzw. Antichess wird als Variante angegeben.</li>
+      <li>Kleinere Aufräumarbeiten für flüssigeres Zeichnen des Bretts.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.10.30.02</h2>
+    <ul>
+      <li><b>Stellungs-Import korrigiert</b>: Rochaderechte gehen beim Import nicht mehr verloren, auch wenn die Könige auf unterschiedlichen Feldern stehen. Exportierte Chess960-Stellungen lassen sich wieder korrekt importieren. Fehlerhafte Stellungen werden mit einer Meldung abgelehnt.</li>
+      <li><b>Chess960-Rochade per Klick</b>: Einfach den König auf den eigenen Turm ziehen oder tippen — das klappt jetzt bei jeder Königsposition. Der Turm wird dabei als Ziel markiert. Funktioniert auch im normalen Schach.</li>
+      <li><b>Trainer und Puzzles</b>: Beim Blättern im Verlauf führt ein Klick aufs Brett zurück zur aktuellen Stellung, statt den Fortschritt durcheinanderzubringen.</li>
+      <li><b>Gespeicherte Partien</b>: Unterverwandlungen und Chess960-Rochaden bleiben nach dem Neuladen erhalten. Passt ein gespeicherter Zug nicht, wird an dieser Stelle angehalten statt falsch weiterzuspielen.</li>
+      <li><b>Import beendet Puzzle/Trainer</b>: Eine importierte Stellung läuft danach als normale Partie.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.10.30.01</h2>
+    <ul>
+      <li><b>Online sicherer</b>: Wer einen Einladungslink hat, kann nicht mehr für den Gegner ziehen. Eine Einladung gilt nur noch für das Konto, das zuerst beigetreten ist.</li>
+      <li><b>Online-Partien bleiben beendet</b>: Neu laden der Einladungsseite startet eine fertige Partie nicht mehr neu.</li>
+      <li><b>Matt online zuverlässig</b>: Der Mattzug kommt jetzt immer vor dem Ergebnis beim Gegner an.</li>
+      <li><b>Zeit schlägt Remis</b>: Ist die Zeit abgelaufen, kann ein spätes Remis-Angebot oder Ergebnis die Zeitniederlage nicht mehr überschreiben.</li>
+      <li><b>Blättern im Zugverlauf</b>: Wer gegen den Computer oder online während des gegnerischen Zugs im Verlauf blättert, bringt die Partie nicht mehr durcheinander — der Zug wird auf der aktuellen Stellung ausgeführt.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.10.27.01</h2>
+    <ul>
+      <li><b>Eröffnungen ausblenden statt Favoriten</b>: Der Stern ist weg. Stattdessen blendet der ⊘-Schalter eine Eröffnung aus — sie rutscht in den Bereich „Ausgeblendet" ganz unten und wird vom Training <em>ausgeschlossen</em>. Nochmal tippen holt sie zurück (keine extra Rücksetztaste). <b>Training</b> übt automatisch alle nicht ausgeblendeten Eröffnungen (Spaced Repetition, fällige zuerst).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.10.12.02</h2>
+    <ul>
+      <li><b>Typische Pläne je Eröffnung</b>: Im Eröffnungs-Trainer stehen unter dem Brett jetzt 3–4 konkrete Pläne pro Eröffnung (Bauernhebel, Figurenplätze, Grundidee) — für alle 54 Eröffnungen. So versteht man die Idee und braucht bei Abweichungen des Gegners weniger Theorie.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.10.12.01</h2>
+    <ul>
+      <li><b>Partie-Review: Eröffnung prüfen</b>: Neuer Button „Eröffnung prüfen" (Standard-Partie gegen den Computer). Er vergleicht die gespielten Züge mit deinem Repertoire und zeigt den <em>Abweichungspunkt</em> — wer zuerst aus der Theorie ging (du oder der Gegner), in welchem Zug, gespielter Zug vs. Buchzug. Ohne gewähltes Repertoire wird gegen alle Eröffnungen geprüft.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.10.11.01</h2>
+    <ul>
+      <li><b>Eröffnungs-Repertoire</b>: In der Eröffnungsauswahl markierst du mit dem Stern (★) deine Eröffnungen. Oben steht „★ Mein Repertoire". Ein Klick auf <em>Start-Repertoire übernehmen</em> setzt einen bewährten Einstieg (Italienisch · Caro-Kann · Damengambit abgelehnt).</li>
+      <li><b>Spaced-Repetition-Training</b>: Button „▶ Training starten" drillt dein Repertoire nach dem Leitner-Prinzip. Jede Eröffnung hat ein Wiederhol-Intervall; sitzt sie (ohne Fehler/Hinweis), wird das Intervall länger, sonst kürzer. Oben wird angezeigt, wie viele heute <em>fällig</em> sind, und das Training nimmt die fälligen zuerst.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.09.07.03</h2>
+    <ul>
+      <li><b>Fix</b>: Das End-Panel des Eröffnungs-Trainers („Weiterspielen"/„Andere Eröffnung") blieb nach Tastendruck stehen — es wird jetzt korrekt ausgeblendet.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.09.07.02</h2>
+    <ul>
+      <li><b>Eröffnungs-Trainer — Ende dezenter</b>: Statt „Eröffnung geschafft!" erscheint am Ende der Variante ein kleines, halbtransparentes Panel mit <b>Weiterspielen</b> (gegen den Computer aus der Endstellung) und <b>Andere Eröffnung</b>.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.09.07.01</h2>
+    <ul>
+      <li><b>Größeres Brett am Mac/PC</b>: das Brett nutzt jetzt die tatsächlich verfügbare Fenster­höhe (statt eines festen Reserve-Werts) — es wird automatisch so groß wie möglich und passt sich beim Fenster-Ändern, Panel-Ein-/Ausblenden und Moduswechsel an. Mobile/iPad-Layout unverändert.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.09.06.05</h2>
+    <ul>
+      <li><b>Eröffnungs-Linien länger</b>: alle Eröffnungen gehen jetzt mindestens bis zum 5. Zug (26 vorher kürzere Linien wurden theoriegerecht verlängert), damit man ein paar Züge mehr übt.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.09.06.04</h2>
+    <ul>
+      <li><b>Eröffnungen sortierbar</b>: In der Auswahl schaltet ein Button (◐) oben rechts zwischen <em>gruppiert</em> (1.e4 / 1.d4 / Flanke) und <em>nach Häufigkeit</em> (flach, häufigste zuerst) um. Die Wahl wird gemerkt.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.09.06.03</h2>
+    <ul>
+      <li><b>Eröffnungs-Trainer — alle 54 Eröffnungen</b>: statt 15 jetzt die komplette Liste, gruppiert nach „1.e4", „1.d4" und „Flankeneröffnungen", jeweils mit Farbe, Hauptvariante, Idee und Feld-Markierung.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.09.06.02</h2>
+    <ul>
+      <li><b>Eröffnungs-Trainer — Feld-Markierung</b>: Start- (gold, pulsierend) und Zielfeld (grün) des nächsten Zugs werden jetzt bei <em>jedem</em> Zug zuverlässig angezeigt (auch nach dem Trainer-Antwortzug) und mit kräftigem Kontrast auf allen Brett-Themes.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.09.06.01</h2>
+    <ul>
+      <li><b>Neues Versionsschema</b>: <code>yy.mm.dd.NN</code> — die letzte Zahl (NN) wird bei <em>jeder</em> Änderung hochgezählt (täglich neu ab 01). Version (Fuß­zeile, Service-Worker-Cache) und Changelog werden ab sofort bei jeder Änderung mitgezogen.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.08.29</h2>
+    <ul>
+      <li><b>Aus dem Partieverlauf weiterspielen</b>: Im Zugverlauf auf eine frühere Stellung klicken und von dort einfach weiterziehen — die späteren Züge werden verworfen und diese Stellung wird zur neuen Live-Stellung (Uhrenstand passend übernommen). Zug per Klick oder Ziehen; funktioniert gegen den Computer (nur bei eigenem Zug) und im Board-Modus. Online bleibt reines Ansehen.</li>
+      <li><b>Figurenset „Silhouette"</b>: neues Set im klassischen Staunton-Look — Schwarz als volle Silhouette mit weißen Glanzlinien, Weiß als sauberes Gegenstück mit dunkler Kontur. Auswählbar unter „Figuren". Beim Brett „Nacht" wird es automatisch gewählt. Das alte Set „Symbole" wurde entfernt.</li>
+      <li><b>8-Damen-Problem</b>: kurze Erklärung unter dem Brett (Regel, 92 Lösungen, 12 Grundlösungen).</li>
+      <li><b>Remis bei ungenügendem Material</b>: in Schnellpartien (Zeitlimit ≤ 10 Min) endet die Partie sofort remis, wenn keine Seite mehr mattsetzen kann — z. B. nur noch zwei Könige oder König + je ein Läufer/Springer. Strikte Fälle (KK, K+Leichtfigur gegen K, gleichfarbige Läufer) enden wie bisher in jeder Partie.</li>
+      <li><b>Eröffnungs-Trainer</b>: neuer Modus „Eröffnungen lernen" mit 15 wichtigen Eröffnungen (Italienisch, Spanisch, Schottisch, Damengambit, Englisch, Réti sowie Sizilianisch, Französisch, Caro-Kann, Skandinavisch, Slawisch, Königsindisch, Nimzo-Indisch, Holländisch). Du spielst die Hauptseite, der Trainer antwortet automatisch entlang der Hauptvariante; falsche Züge werden abgelehnt, „Nächster Zug" verrät den Buchzug. Das Start- und Zielfeld des nächsten Zugs werden direkt am Brett markiert (gold → grün). Kurze Idee der Eröffnung unter dem Brett.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Neu in Version 26.08.22</h2>
+    <ul>
+      <li><b>Zug-Animation</b>: die ziehende Figur gleitet zum Zielfeld statt zu springen — gegen den Computer, online und im Board-Modus.</li>
+      <li><b>Haptik</b>: kurze Vibration bei Zug, Schlag, Schach und Partieende (an den Ton-Schalter gekoppelt; funktioniert auf Android — iPhones bieten keine Web-Vibration).</li>
+      <li><b>Zeitnot-Ticken</b>: unter 10 Sekunden ein leiser Tick pro Sekunde für die laufende Uhr.</li>
+      <li><b>Computer-Partie fortsetzen</b>: unterbrochene Partien gegen den Computer werden automatisch gespeichert und beim nächsten Öffnen zum Fortsetzen angeboten (inkl. Variante, Uhren und Umwandlungen).</li>
+      <li><b>Nachspiel-Analyse</b>: nach Partieende „Partie analysieren" markiert Ungenauigkeiten (?!), Fehler (?) und grobe Patzer (??) im Verlauf und zeigt die drei größten eigenen Fehler zum Anklicken.</li>
+      <li><b>8-Damen-Problem</b>: eigener Anzeige-Modus mit den 12 Grundlösungen (ohne Drehungen/Spiegelungen), per „Zurück/Weiter" durchklickbar.</li>
+      <li><b>Matt-Puzzle-Modus</b>: eigener Modus, beim Start als zwei Buttons „Matt in 2 Moves" und „Matt in 3 Moves". <b>Matt in 2</b>: 28 Endspiel-Aufgaben mit Dame, Turm sowie Läufer- und Springer-Kombinationen. <b>Matt in 3</b>: 15 berühmte Meisterpartien (Greco bis Karpow; Quelle: Schachgemeinschaft Schöningen) mit Partie-Angabe. Falsche Züge werden abgelehnt, der Gegner verteidigt sich, „Nächstes Puzzle" führt weiter. „Lösung zeigen" verrät pro Klick nur einen Zug. Alle Stellungen sind auf korrektes Matt geprüft.</li>
+      <li><b>Spielerkonten</b>: Für Online-Partien („Mit Freund") meldet man sich jetzt an — Registrierung einmalig mit Name, Passwort und Einladungscode. In der Partie stehen beide Namen in der Statuszeile („X vs Y"). Gegen den Computer spielt man weiterhin ohne Konto.</li>
+      <li><b>Konten-Sicherheit</b>: Passwörter nur als bcrypt-Hash, Session-Cookie (30 Tage, HttpOnly/Secure), Schutz gegen Durchprobieren (max. 10 Versuche pro 15 Min), Nutzerdaten serverseitig gesperrt.</li>
+      <li><b>Elo-Wertung</b> (lokal): 5-Minuten-Partien gegen die eingebaute Engine werden gewertet — Start 1200, Stufen 800/1100/1400/1700, Anzeige mit +/− nach jeder Partie.</li>
+      <li><b>Zeitbonus</b>: bei Partien bis einschließlich 5 Minuten bekommt <em>jede</em> Seite +1 Sekunde pro Zug — auch der Computer (vorher nur der Mensch).</li>
+      <li><b>Serverseitige Uhr</b> für Online-Partien: die Bedenkzeit wird auf dem Server geführt — kein Auseinanderlaufen der Uhren, Zeitüberschreitung wird zentral erkannt.</li>
+      <li><b>Größeres Brett am PC</b>: das Brett nutzt jetzt die volle Bildschirmhöhe (bleibt exakt quadratisch).</li>
+      <li><b>PGN/FEN-Import</b>: Stellungen und Partien können eingefügt und weitergespielt werden.</li>
+      <li><b>PWA/Offline</b>: das Spiel ist als App installierbar und läuft gegen den Computer auch offline (Service Worker; Konto-/Online-Anfragen werden nie gecacht).</li>
+      <li><b>Brett-Themes</b>: unter „Brett" wählbar — Classic, Holz (mit Maserung), Turnier-Grün und Nacht (dunkel, mit aufgehellten Figuren-Konturen). Auswahl wird gespeichert.</li>
+      <li><b>Figurensets</b>: unter „Figuren" wählbar — Klassisch, Comic (dicke Konturen, flacher Stil), Symbole (Schachzeichen-Stil) und Bronze. Auswahl wird gespeichert, gilt auch im Umwandlungs-Dialog.</li>
+      <li><b>Turnier-Grün überarbeitet</b>: jetzt flache Feldfarben im klassischen Online-Look (Creme/Grün) mit dunklem Rahmen.</li>
+      <li><b>Passende Figuren je Brett</b>: beim Brettwechsel wird das Figurenset automatisch mitgestellt (Classic→Klassisch, Holz/Turnier-Grün→Bronze, Nacht→Comic) — manuell weiterhin frei wählbar.</li>
+      <li><b>Auswahl pro Konto gemerkt</b>: Stärke, Farbe, Engine, Brett, Figuren, Spielart und Zeit werden im Spielerkonto gespeichert und beim Anmelden auf jedem Gerät wiederhergestellt.</li>
+      <li><b>Figur greifen &amp; ziehen am PC</b>: Figur mit gedrückter Maustaste halten — sie folgt dem Cursor — und durch Loslassen setzen. Funktioniert auch für Premove; Klick-Steuerung bleibt erhalten.</li>
+      <li><b>Schnelle Revanche gegen den Computer</b>: nach Partieende „Nochmal" im Ergebnisfenster — startet sofort mit denselben Einstellungen.</li>
+      <li><b>Materialbilanz</b>: geschlagene Figuren beider Seiten (am PC seitlich neben dem Brett) und Punkte-Saldo („+2") unter dem Brett — korrekt auch bei Umwandlung und en passant.</li>
+      <li><b>Premove auch per Drag &amp; Drop</b>: Vorausziehen funktioniert jetzt zusätzlich zum Klicken auch durch Ziehen der Figur.</li>
+      <li><b>iPhone: Brett randlos, volle Breite</b>: geschlagene Figuren stehen am iPhone nicht mehr seitlich, sondern als kompakte Zeile unter dem Brett — das Brett selbst nutzt die komplette Bildschirmbreite.</li>
+      <li><b>iPhone: Materialbilanz als Netto-Differenz</b>: statt aller geschlagenen Figuren wird pro Figurentyp nur der Überschuss der im Vorteil liegenden Seite gezeigt (z. B. Bauer ×2), wie bei chess.com/lichess.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Fehlerbehebungen</h2>
+    <ul>
+      <li><b>Board-Modus war mit gespeichertem Stand unbenutzbar</b>: beim Laden eines Spielstands blieb die Zeitauswahl über dem Brett liegen und hat alle Klicks geschluckt.</li>
+      <li><b>Doppelter Computerzug behoben</b>: reagierte Stockfish nicht innerhalb von 12 Sekunden, sprang die eingebaute Engine ein — kam Stockfish danach doch noch, wurden zwei Züge ausgeführt und der Mensch übersprungen.</li>
+      <li><b>„Zug zurück" während der Bedenkzeit</b>: der Computer hat danach einen Zug für den Menschen gemacht und die Partie blieb hängen. Die Engine zieht jetzt nie, wenn der Mensch am Zug ist.</li>
+      <li><b>„Zurücksetzen" im Board-Modus</b> beendete die Partie sofort mit „Zeit abgelaufen" — die Uhren starten jetzt wieder mit der gewählten Bedenkzeit.</li>
+      <li><b>Farbwahl „Schwarz"</b> wurde beim ersten Antippen ignoriert: das Brett drehte sich, aber die eigenen Figuren reagierten nicht.</li>
+      <li><b>Uhr im Board-Modus</b>: beim Laden eines Spielstands wurde das Inkrement doppelt gutgeschrieben.</li>
+      <li><b>Session-Cookie</b> wird jetzt zuverlässig mit <code>Secure</code> gesetzt (hinter dem Reverse-Proxy war das Flag zuvor wirkungslos).</li>
+      <li><b>Kontodaten aus der Versionsverwaltung entfernt</b> und dauerhaft ausgeschlossen.</li>
+      <li><b>Verlorene Online-Züge behoben</b>: Spielstände werden jetzt exklusiv gesperrt, während sie geändert werden. Vorher konnten ein Zug und die Statusabfrage der Gegenseite gleichzeitig schreiben — der Zug war weg und die Partie meldete „Out of sync".</li>
+      <li><b>Kontodaten gegen Verlust gesichert</b>: Schreibvorgänge werden auf vollständige Übertragung geprüft, vor jeder Änderung wird eine Sicherungskopie angelegt, und eine beschädigte Kontodatei führt zum Abbruch statt zum Überschreiben.</li>
+      <li><b>Serverlast deutlich gesenkt</b>: das Aufräumen alter Partien lief bei jeder einzelnen Anfrage (also alle 1,2 Sekunden pro Spieler) und las dabei alle Spielstände. Jetzt nur noch beim Anlegen einer Partie bzw. gelegentlich; die Anzeige laufender Partien nutzt einen kurzlebigen Zwischenspeicher.</li>
+      <li><b>Robustheit</b>: fehlerhafte Anfragen führen nicht mehr zu Serverfehlern, Reste abgebrochener Schreibvorgänge werden automatisch entfernt.</li>
+      <li><b>Partieverlauf-Ansicht abgesichert</b>: Beim Zurückblättern wurde bisher die laufende Stellung überschrieben — ein danach eintreffender Computer- oder Gegnerzug landete auf der alten Stellung (Figuren verschwanden, der Verlauf bekam einen Ast) und die Uhr lief für die falsche Farbe. Blättern ist jetzt gefahrlos; ein eintreffender Zug stellt zuerst die laufende Partie wieder her.</li>
+      <li><b>Online-Regeln serverseitig durchgesetzt</b>: Züge werden nur in einer laufenden Partie und nur für die eigene Farbe angenommen; abgelaufene Bedenkzeit lässt sich nicht mehr durch schnelles Ziehen zurückholen.</li>
+      <li><b>Antichess im Board-Modus</b>: Schwarz sieht den Schlagzwang jetzt auch (Markierung und Hinweis galten vorher nur für Weiß).</li>
+      <li><b>Umwandlung im Board-Modus</b>: der Auswahldialog zeigt die Figuren in der richtigen Farbe.</li>
+      <li><b>Aufgeben im Board-Modus</b>: es gibt die Seite auf, die am Zug ist; der Zusatz „(Computer)" entfällt.</li>
+      <li><b>„Zug zurück" im Board-Modus</b> wird jetzt gespeichert — nach einem Neuladen waren die zurückgenommenen Züge vorher wieder da.</li>
+      <li><b>Spielart wechseln</b> verwirft jetzt auch die alte Partie (Zugmarkierungen, Materialbilanz und Verlauf zeigten sonst noch die vorige).</li>
+      <li><b>„Neue Partie" im Online-Modus</b>: die alte Partie wird nicht mehr im Hintergrund weiter abgefragt und samt Tönen nachgespielt.</li>
+      <li><b>Zwei Finger am Tablet</b>: ein zweiter Finger beendet den Zug nicht mehr an der falschen Stelle.</li>
+      <li><b>Analyse-Anzeige</b>: veraltete Ergebnisse einer vorigen Stellung werden verworfen statt eingezeichnet.</li>
+      <li><b>Import</b>: eine laufende Berechnung wird vor dem Import sauber abgebrochen.</li>
+      <li><b>Spielstand im Board-Modus behält die Spielart</b>: Eine gespeicherte Antichess-Partie wurde nach dem Neuladen als normales Schach fortgesetzt (kein Schlagzwang, plötzlich Schach und Matt). Chess960-Partien ließen sich überhaupt nicht wiederherstellen. Die Startstellung wird jetzt vollständig gesichert — inklusive Variante und Rochaderechten; ein Spielstand wird nur noch in die passende Spielart geladen.</li>
+      <li><b>Online-Zug abgelehnt → sauberer Abgleich</b>: Lehnt der Server einen Zug ab (Zeit abgelaufen, nicht am Zug), wird die lokale Anzeige jetzt zuverlässig auf den echten Serverstand zurückgesetzt statt vorauszulaufen.</li>
+      <li><b>Akku schonen</b>: Uhr, Online-Abfrage und Sitzungszähler pausieren bei beendeter Partie bzw. wenn der Tab im Hintergrund ist.</li>
+      <li><b>Computer reagiert flüssiger</b>: die Stockfish-Engine wird nicht mehr vor jedem Zug neu geladen; das Brett wird effizienter aufgebaut (spürbar beim Ziehen am iPad).</li>
+      <li><b>Engine-Stabilität</b>: ein einzelner Aussetzer der Hintergrund-Berechnung verlegt nicht mehr dauerhaft alles in den Hauptthread.</li>
+      <li><b>PGN-Export</b> trägt jetzt das tatsächliche Ergebnis ein (1-0 / 0-1 / ½-½) statt immer „offen".</li>
+      <li><b>Letzter-Zug-Pfeil</b>: der zuletzt gespielte Zug wird zusätzlich zur Feldmarkierung als Pfeil auf dem Brett angezeigt (dreht mit der Brettausrichtung mit) und blendet nach 5 Sekunden weich aus.</li>
+      <li><b>Eröffnungsname</b>: bei Standard-Schach wird die erkannte Eröffnung unter dem Brett angezeigt (z. B. „Sizilianisch, Najdorf") und aktualisiert sich mit jedem Zug — über 50 gängige Eröffnungen und Varianten.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Spiel</h2>
+    <ul>
+      <li><b>Chess960-Rochade</b> vollständig umgesetzt (kurz &amp; lang), Standard-Rochade als Spezialfall vereinheitlicht, inkl. korrekter UCI-/FEN-Notation für Online &amp; Stockfish.</li>
+      <li><b>Antichess (Räuberschach)</b> als neue Spielart mit voller Regelkontrolle: Schlagzwang, kein Schach/Matt, König als normale Figur, keine Rochade, Umwandlung auch in König, umgekehrte Siegbedingung.</li>
+      <li><b>Computer-Gegner für Antichess</b> mit invertierter Bewertung (Material abgeben ist gut); Stockfish wird dabei automatisch auf die eingebaute Engine umgeschaltet.</li>
+      <li><b>Schlagzwang-Anzeige</b> in Antichess: rote Ringe um alle schlagenden Figuren und alle schlagbaren Ziele, plus Hinweis „· Schlagzwang!" in der Statuszeile.</li>
+      <li><b>Premove (Vorausziehen)</b>: Zug während des Gegnerzugs vormerken (blau markiert), wird sofort ausgeführt sobald legal — sonst verworfen. Gegen Computer und online.</li>
+      <li><b>Uhren bei „Ohne Uhr"</b>: jetzt sichtbar und aufwärts zählend (Stoppuhr pro Seite).</li>
+      <li><b>„iPad als Schachbrett"</b> als neuer Spielmodus: freies Spielen ohne Engine, beide Seiten manuell steuerbar, ideal für zwei Spieler gegenüber.</li>
+      <li><b>Uhren &amp; Figuren-Drehung</b> im Board-Modus: bei Schwarz am Zug drehen sich alle Figuren und beide Uhren um 180°, damit der Spieler am Zug immer seine Perspektive hat.</li>
+      <li><b>Spielstand-Speicherung</b> im Board-Modus: automatisches Speichern nach jedem Zug in <code>localStorage</code>, automatisches Laden beim erneuten Öffnen.</li>
+      <li><b>„Zurücksetzen"</b> im Board-Modus: Button zum Löschen des gespeicherten Spielstands und Neustart.</li>
+      <li><b>Varianten-Unterstützung</b> im Board-Modus: Chess960, Antichess, Zufallsstellung, Ohne Damen/Türme (gespeicherte Spiele nur geladen, wenn die Startstellung zur gewählten Variante passt).</li>
+      <li><b>Zeitauswahl im Board-Modus</b>: jetzt wie bei den anderen Modi — nach „iPad als Schachbrett" wird die Uhrzeit abgefragt (Ohne Uhr bis Klassisch).</li>
+      <li><b>„Tipp" Button entfernt</b>: der Tipp-Button wurde aus dem Panel komplett entfernt.</li>
+      <li><b>Zeitauswahl-Labels</b>: Kategorien mit Zeilenumbruch — <code>Bullet</code>, <code>Blitz</code>, <code>Rapid</code>, <code>Turnier</code>, <code>Klassisch</code> (z.B. „Blitz\n5min").</li>
+      <li><b>Modus-Auswahl vertikal</b>: „Gegen Computer", „Mit Freund", „iPad als Schachbrett" jetzt übereinander gestapelt.</li>
+      <li><b>Header im Brett-Container</b>: Uhren und Status sind jetzt innerhalb von <code>board-wrap</code> — exakt bündig mit der Brettbreite.</li>
+      <li><b>Board-Only nur auf PC/iPad</b>: auf iPhone (&lt;821px) sieht der Board-Modus visuell wie der normale Modus aus (kein Layout-Wechsel, keine Drehung).</li>
+      <li><b>Upload-Automatisierung</b>: PowerShell-Skript <code>upload_chess.ps1</code> aktualisiert den Versionsstempel auf <code>yymmdd-hh</code> und lädt die Datei per SCP hoch (optional mit Git-Push).</li>
+      <li><b>Versionsformat</b>: auf <code>yymmdd-hh</code> umgestellt (z.B. <code>260630-21</code>).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Sound</h2>
+    <ul>
+      <li><b>Sieg-Fanfare</b>: aufsteigende Triumph-Fanfare (G–C–E–G–C) bei eigenem Sieg.</li>
+      <li><b>Niederlage</b>: Beethovens 5. Sinfonie (Eröffnungsmotiv).</li>
+      <li><b>Perspektivisch</b>: eigener Sieg → Fanfare, eigene Niederlage → Beethoven; online für beide Seiten getrennt korrekt (inkl. Aufgeben). Alles offline über Web Audio.</li>
+      <li><b>Holz-Klack bei jedem Zug</b>: eigener Zug, Computer-Zug und Online-Gegnerzug spielen jetzt einen Holz-Klick (statt nur bei Sieg/Niederlage/Gegnerzug).</li>
+      <li><b>Schach-Warnung</b>: das bedrohte Königsfeld pulsiert rot, dazu ein kurzer aufsteigender Warnton.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Online &amp; Server</h2>
+    <ul>
+      <li><b>Remis-Angebot</b>: Remis bieten — der Gegner nimmt an (Partie endet „Remis (Einigung)") oder lehnt ab. Ein eigener Zug zieht das Angebot zurück.</li>
+      <li><b>Revanche</b>: nach Partieende „Noch ein Spiel?" mit dem gleichen Gegner und getauschten Farben, ohne neuen Link.</li>
+      <li><b>Partien-Limit</b>: begrenzte Zahl gleichzeitig laufender Partien (Schutz gegen Platten-/Inode-Fill); wartende und beendete Spiele werden automatisch aufgeräumt.</li>
+      <li><b>König-Umwandlung</b> im UCI-Sync erlaubt (für Antichess).</li>
+      <li><b>Spielstände abgesichert</b>: direkter Web-Zugriff auf <code>online_games/</code> per nginx gesperrt — Zugriff nur noch serverseitig über <code>chess_online.php</code>.</li>
+    </ul>
+  </section>
+
+  <footer>(c) Zoller Martin 2026</footer>
+</div>
+</body>
+</html>

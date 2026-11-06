@@ -1,0 +1,23 @@
+chess.html.bak
+online_games/
+*.log
+.local/
+
+# Kontodaten NIEMALS ins Repo: enthaelt Passwort-Hashes, gueltige Session-Tokens
+# und den Einladungscode. Nur auf dem Server, per nginx gesperrt.
+# (breite Regel deckt users.json/sessions.json/rate.json UND config.php ab)
+# auth_data/* statt auth_data/ — ein ausgeschlossenes VERZEICHNIS betritt git gar
+# nicht erst, eine Ausnahme darin bliebe wirkungslos. So greift die naechste Zeile.
+auth_data/*
+# Die Vorlage ohne Code gehoert ins Repo, sonst weiss niemand, wie die Datei
+# auszusehen hat:
+!auth_data/config.example.php
+
+# Reste von atomaren Schreibvorgaengen (tmp -> rename)
+*.tmp.*
+
+# graphify: Cache/Kosten/lokale Pfade nicht ins Repo (Report + Graph bleiben)
+graphify-out/cache/
+graphify-out/cost.json
+graphify-out/.graphify_python
+graphify-out/.graphify_root
